@@ -1,2 +1,2 @@
 # library-app
-Console application for a virtual library
+Simple console application for a digital library
