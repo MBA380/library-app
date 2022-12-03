@@ -74,15 +74,6 @@ public class ConsoleLibApp {
         bookArrayList.add(newbook);
     }
 
-    // Part B task c.6; File writing method to write to a file
-    static void filewriting(String path, String text, boolean append) throws IOException {
-        File file = new File(path);
-        FileWriter fw = new FileWriter(file, append);
-        PrintWriter pw = new PrintWriter(fw);
-        pw.println(text);
-        pw.close();
-    }
-
     public void firstMenu() throws Exception {
         System.out.println("**************** Welcome to the Library ****************");
         System.out.println("=====================================================");
@@ -170,7 +161,7 @@ public class ConsoleLibApp {
                     else{
                         break;
                     }
-                case 5: // Save and extract all books
+                case 5: // Part B task c.6; File writing method to write to a file
                     System.out.println("======================================================");
                     System.out.println("Please enter the directory where you will like to save along with the file name");
                     System.out.println("Note: Default directory is in your current folder for the .jar");
@@ -181,13 +172,13 @@ public class ConsoleLibApp {
                     inp.nextLine();
                     String input10 = inp.nextLine();
                     input9 = input10.replaceAll("\\\\", "/");
-
+                    FileWriter writer = new FileWriter(input9);
                     for(Book allbooks : bookArrayList){
-                        String output = allbooks.getBook_name() + "\n" + allbooks.getISBN() + "\n" + allbooks.getAuthor()
-                                + "\n" + allbooks.getPublisher() + "\n" + allbooks.getDate() + "\n";
-                        // Please specify path if required here:
-                        filewriting(input9, output, true);
+                        writer.write(allbooks.getBook_name() + "\n" + allbooks.getISBN() + "\n" + allbooks.getAuthor()
+                                + "\n" + allbooks.getPublisher() + "\n" + allbooks.getDate() + "\n");
+                        writer.write("\n");
                     }
+                    writer.close();
                     break;
                 case 6:
                     break;
