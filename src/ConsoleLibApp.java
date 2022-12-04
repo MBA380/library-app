@@ -1,5 +1,6 @@
 import java.io.*;
 import java.sql.SQLOutput;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -55,7 +56,7 @@ public class ConsoleLibApp {
     ArrayList<Book> authorfinder(String name){
         ArrayList<Book> temparray = new ArrayList<>();
         for(Book all : bookArrayList){
-            if(all.getAuthor().contains(name)){
+            if(all.getAuthor().equals(name)){
                 temparray.add(all);
             }
         }
@@ -118,10 +119,17 @@ public class ConsoleLibApp {
                     break;
                 case 2: // Find books published after x year
                     System.out.println("Please enter the year you would like to search after");
-                    input2 = inp.nextInt();
-
-                    for(Book a : publishedafterx(input2)){
-                        System.out.println(a);
+                    while(true) {
+                        try {
+                            input2 = inp.nextInt();
+                            for (Book a : publishedafterx(input2)) {
+                                System.out.println(a);
+                            }
+                            break;
+                        } catch (InputMismatchException excep) {
+                            System.out.println("Please enter a valid year");
+                            inp.next();
+                        }
                     }
                     break;
                 case 3: // Find books published by x author
@@ -135,21 +143,30 @@ public class ConsoleLibApp {
                     }
                     break;
                 case 4: // Add a new book to the list
-                    inp.nextLine();
-                    System.out.println("Please enter the book name");
-                    input4 = inp.nextLine();
-                    System.out.println("Please enter the book ISBN");
-                    String ISBNinp = inp.nextLine();
-                    input5 = Integer.parseInt(ISBNinp);
-                    System.out.println("Please enter the Authors first and last name");
-                    input6 = inp.nextLine();
-                    System.out.println("Please enter the book publisher");
-                    input7 = inp.nextLine();
-                    System.out.println("Please enter the published date in the following format:");
-                    System.out.println("                  ''Jun 14 2010''");
-                    input8 = inp.nextLine();
 
-                    addbook(input4, input5, input6, input7, input8);
+                    while(true) {
+                        Scanner newinp = new Scanner(System.in);
+                        try {
+                            System.out.println("Please enter the book name");
+                            input4 = newinp.nextLine();
+                            System.out.println("Please enter the book ISBN");
+                            String ISBNinp = newinp.nextLine();
+                            input5 = Integer.parseInt(ISBNinp);
+                            System.out.println("Please enter the Authors first and last name");
+                            input6 = newinp.nextLine();
+                            System.out.println("Please enter the book publisher");
+                            input7 = newinp.nextLine();
+                            System.out.println("Please enter the published date in the following format:");
+                            System.out.println("                  ''Jun 14 2010''");
+                            input8 = newinp.nextLine();
+                            addbook(input4, input5, input6, input7, input8);
+                            break;
+                        }
+                        catch (NumberFormatException misinput){
+                            System.out.println("Please enter a valid integer, try again");
+                            System.out.println();
+                        }
+                    }
 
                     System.out.println("Would you like to save and extract the new file (Y/N) ?");
                     input11 = inp.next();
@@ -164,7 +181,7 @@ public class ConsoleLibApp {
                 case 5: // Part B task c.6; File writing method to write to a file
                     System.out.println("======================================================");
                     System.out.println("Please enter the directory where you will like to save along with the file name");
-                    System.out.println("Note: Default directory is in your current folder for the .jar");
+                    System.out.println("Note: Default directory is in the folder your .jar or .java files are in");
                     System.out.println("e.g. C:\\Users\\Mahad\\Downloads\\Filename.txt");
                     System.out.println("======================================================");
 

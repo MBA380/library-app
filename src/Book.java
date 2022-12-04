@@ -1,14 +1,13 @@
 public class Book {
     private String book_name;
     private int ISBN;
-    private String SISBN;
     private String author;
     private String publisher;
     private String date;
 
     // overrides toString
     public String toString(){
-        return this.book_name + ", " + this.ISBN + ", " + this.author + ", " + this.publisher + ", " + this.date;
+        return "Book name = " + this.book_name + " | ISBN = " + this.ISBN + " | Author = " + this.author + " | Publisher = " + this.publisher + " | Date published = " + this.date;
     }
 
     // Default parameter that returns a dummy book
