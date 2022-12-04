@@ -42,7 +42,7 @@ public class Book {
         this.date = date;
     }
 
-    // set methods
+    // setter methods
     void setBook_name(String book_name){
         this.book_name = book_name;
     }
@@ -59,7 +59,7 @@ public class Book {
         this.date = date;
     }
 
-    // get methods
+    // getter methods
     String getBook_name(){
         return this.book_name;
     }
