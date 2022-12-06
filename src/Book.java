@@ -12,27 +12,7 @@ public class Book {
 
     // Default parameter that returns a dummy book
     Book(){
-        this("Dummy ConsoleApp.Book", "John Doe", "John Publishing", "May 13 2004");
-    }
-
-    Book(String book_name){
-        this.book_name = book_name;
-    }
-
-    Book(int ISBN){
-        this.ISBN = ISBN;
-    }
-
-    Book(String book_name, int ISBN){
-        this.book_name = book_name;
-        this.ISBN = ISBN;
-    }
-
-    Book(String book_name, String author, String publisher, String date){
-        this.book_name = book_name;
-        this.author = author;
-        this.publisher = publisher;
-        this.date = date;
+        this("Dummy Book", 101, "John Doe", "John Publishing", "May 13 2004");
     }
     Book(String book_name, int ISBN, String author, String publisher, String date){
         this.book_name = book_name;
