@@ -1,5 +1,4 @@
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -75,7 +74,7 @@ public class ConsoleLibApp {
         bookArrayList.add(newbook);
     }
 
-    public void firstMenu() throws Exception {
+    public void firstMenu() {
         System.out.println("**************** Welcome to the Library ****************");
         System.out.println("=====================================================");
         System.out.println("  Please enter the directory for the file of books");
@@ -89,7 +88,9 @@ public class ConsoleLibApp {
                 scannerReadFile();
                 break;
             } catch (FileNotFoundException file) {
-                System.out.println("Please enter a valid file");
+                System.out.println("File not found, please enter a valid file");
+            } catch (Exception fileerror) {
+                System.out.println("Invalid file, please check your file and format and try again");
             }
         }
     }
