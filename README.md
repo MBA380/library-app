@@ -1,5 +1,5 @@
 # library-app
-Simple console application for a digital library
+Simple console application for a digital library made in Java for a university project
 
 *********************************************************************************
 Run the program and input the BooklistFile.txt when asked for a file on first run
